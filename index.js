@@ -9,9 +9,6 @@ app.listen(port, function(){
     console.log(`Your App Listen To ${port} Port `)
 })
 const prefix = "+"
-function idgen() {
-    return  `_${Math.random().toString(36).substr(2, 5)}_${Math.random().toString(36).substr(2, 5)}`
- }
  
 client.on('message', async badboy => {
 var args = badboy.content.split(' ')
