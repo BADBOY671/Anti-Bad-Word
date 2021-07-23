@@ -16,6 +16,9 @@ var args = badboy.content.split(' ')
     if(!cmd) return 
     let id = code(10);
  if(cmd.toLowerCase() === prefix + "add-word") {
+
+if(!badboy.member.hasPermission("MANAGE_GUILD")) return 
+
      const f = badboy.content.split(' ').slice(1).join(' ')
      if(!f) return 
      
@@ -39,7 +42,7 @@ word: f.toLowerCase(),
      
      
  } else if(cmd.toLowerCase() === prefix + "list") {
-     
+     if(!badboy.member.hasPermission("MANAGE_GUILD")) return 
      let database = db.get(`hi_${badboy.guild.id}`) 
   if(database === null) return badboy.channel.send(`It's looks ur auto delete bad word it's empty`)
   let list = []
@@ -62,6 +65,9 @@ list.push(`Word: ${x.word}
  
      
  } else if(cmd.toLowerCase() === prefix + "remove") {
+
+if(!badboy.member.hasPermission("MANAGE_GUILD")) return 
+
     const f = args[1]
 let database = db.get(`hi_${badboy.guild.id}`)
 if(database) {
@@ -82,6 +88,9 @@ if(database) {
      
  }
  } else if(cmd.toLowerCase() === prefix + "remove-all") {
+
+if(!badboy.member.hasPermission("MANAGE_GUILD")) return 
+
      var data = await db.fetch(`hi_${badboy.guild.id}`)
      if(data === null) return badboy.channel.send(`database empty`)
      badboy.channel.send(`Done Delete ${data.length} Words`).then(() => {
